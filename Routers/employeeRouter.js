@@ -1,5 +1,5 @@
 import express from 'express';
-import { addEmployee ,getEmployee,deleteEmployee} from '../Controllers/employeeController.js';
+import { addEmployee ,getEmployee,deleteEmployee,updateEmployee} from '../Controllers/employeeController.js';
 import multer from "multer";
 
 
@@ -13,8 +13,10 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage})
 
 
-employeeRouter.post("/add",upload.fields([{ name: 'profilepicture'},{ name: 'application'},{ name: 'passport'}]),addEmployee)
+// employeeRouter.post("/add",upload.fields([{ name: 'profilepicture'},{ name: 'application'},{ name: 'passport'}]),addEmployee)
+employeeRouter.post("/add",addEmployee)
 employeeRouter.get("/",getEmployee)
 employeeRouter.post("/delete",deleteEmployee) 
+employeeRouter.post("/update",updateEmployee) 
 
 export default employeeRouter

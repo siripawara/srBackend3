@@ -46,18 +46,22 @@ const employeeSchema = new mongoose.Schema({
         type:String,
         default:""
     },
-    application:{
-        type:String,
-        default:""
+    selected:{
+        type:Boolean,
+        default:false
     },
-    passport:{
-        type:String,
-        default:""
-    },
-    profilepicture:{
-        type:String,
-        default:""
-    },
+    // application:{
+    //     type:String,
+    //     default:""
+    // },
+    // passport:{
+    //     type:String,
+    //     default:""
+    // },
+    // profilepicture:{
+    //     type:String,
+    //     default:""
+    // },
 })
 
 const employeeModel = mongoose.models.employee || mongoose.model("employee",employeeSchema)
