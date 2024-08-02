@@ -1,5 +1,5 @@
 import employeeModel from "../Models/employeeModel.js";
-
+import fs, { fdatasync } from 'fs'
 
 const addEmployee = async (req,res)=>{ 
     
@@ -54,6 +54,11 @@ const deleteEmployee = async (req,res)=>{
     try {
         if(req.body.id){
             const response = await employeeModel.findByIdAndDelete(req.body.id)
+            
+                fs.unlink(`uploads/${response.application}`,()=>{})
+                fs.unlink(`uploads/${response.passport}`,()=>{})
+                fs.unlink(`uploads/${response.profilepicture}`,()=>{})
+            
             res.json({success:true,messsage:"Delete Succuessfully...",response})
             console.log("Delete Succuessfully...")
         }else{
